@@ -10,6 +10,24 @@ Install dependencies with `npm install`, then use:
 - `npm run build` — create the production site in `dist/`.
 - `npm run preview` — preview the production build locally.
 
+Open the local URL printed by Vite after starting `npm run dev` or `npm run preview`.
+If the default port (5173) is already in use, Vite automatically chooses another
+port, such as 5174. Opening `index.html` directly from the file system does not
+start the app; it needs to be served by Vite or another static web server.
+
+## GitHub Pages deployment
+
+GitHub Pages must publish the Vite production output, not the repository's source
+`index.html`. The workflow in `.github/workflows/deploy.yml` builds the app and
+publishes `dist/` when changes are pushed to `main`. In the repository settings,
+open **Pages** and set **Build and deployment → Source** to **GitHub Actions**.
+
+This repository is named `new-gh`, so its GitHub Pages project URL is
+`https://friendlybrandon.github.io/new-gh/`. The root URL
+`https://friendlybrandon.github.io/` is reserved for a user site and requires a
+repository named `friendlyBrandon.github.io` (GitHub URLs are case-insensitive).
+Rename this repository to that exact name if the root URL is the intended one.
+
 ## Project files
 
 - `index.html` — Vite entry page and document metadata.
@@ -53,12 +71,19 @@ The LinkedIn profile could not be accessed automatically while creating the port
 
 ## Validation performed
 
-- Ran `npm run build` to validate the Vue application and create the production bundle.
-- Opened the page in a browser and checked the mobile menu, theme switching, and ProxyBase logo loading.
-- Checked for horizontal overflow at mobile, tablet, and desktop viewport widths.
-- Checked the light-mode contact-section text contrast in the browser.
+- Ran `npm run build`; Vite created the production bundle in `dist/`.
+- Started the Vite development server and confirmed the page, Vue entry module, and Mysterium logo returned HTTP 200. When port 5173 was occupied, Vite selected port 5174; opening the printed URL served the portfolio correctly.
+- The previous visual checks covered the mobile menu, theme switching, ProxyBase logo loading, horizontal overflow at mobile/tablet/desktop widths, and light-mode contact text contrast.
 
 There is no automated test suite; the production build is the project-level validation command.
+
+## Startup troubleshooting
+
+If the expected page does not appear at `http://localhost:5173`, check the URL
+printed in the terminal after `npm run dev`. A port conflict makes Vite serve the
+site on the next available port. For GitHub Pages, check the Actions tab for a
+successful deployment and confirm Pages uses **GitHub Actions** as its source;
+publishing the repository root serves unbuilt Vue source and leaves the page blank.
 
 ## What could be improved
 
