@@ -2,6 +2,37 @@
 import { ref, watch } from "vue";
 import proxyBaseLogo from "../duckinglogo.png";
 
+const vReveal = {
+  mounted(element) {
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches
+    ) {
+      element.classList.add("is-visible");
+      return;
+    }
+
+    element.classList.add("reveal-pending");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          element.classList.remove("reveal-pending");
+          element.classList.add("is-visible");
+          observer.unobserve(element);
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+    );
+
+    element._revealObserver = observer;
+    observer.observe(element);
+  },
+  unmounted(element) {
+    element._revealObserver?.disconnect();
+    delete element._revealObserver;
+  },
+};
+
 const mysteriumLogo = `${import.meta.env.BASE_URL}myst.png`;
 const isMenuOpen = ref(false);
 const isLightMode = ref(false);
@@ -63,8 +94,8 @@ function closeMenu() {
     <section class="hero section-wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> Graduate programming student</p>
-        <h1 id="hero-title">Curious by nature.<br /><span>Developer</span> by practice.</h1>
-        <p class="hero-intro">
+        <h1 id="hero-title" v-reveal>Curious by nature.<br /><span>Developer</span> by practice.</h1>
+        <p class="hero-intro" v-reveal>
           I’m friendlyBrandon — a graduate programming student learning by building useful
           software. My current toolkit includes C#, Java, and JavaScript.
         </p>
@@ -100,15 +131,15 @@ function closeMenu() {
     <section class="about section-wrap section-space" id="about" aria-labelledby="about-title">
       <div class="section-heading">
         <p class="eyebrow">01 / A bit about me</p>
-        <h2 id="about-title">Building a foundation<br />for <span>what’s next.</span></h2>
+        <h2 id="about-title" v-reveal>Building a foundation<br />for <span>what’s next.</span></h2>
       </div>
       <div class="about-content">
-        <p class="large-copy">
+        <p class="large-copy" v-reveal>
           I’m a graduate programming student who enjoys turning ideas into real, working
           software. I’m building a broad foundation and getting hands-on with projects that
           connect code to everyday problems.
         </p>
-        <p class="body-copy">
+        <p class="body-copy" v-reveal>
           I like learning how different parts of an application fit together — from a clear
           interface to the logic behind it. Outside of coursework, I also help out in the
           Mysterium Network community.
@@ -128,7 +159,7 @@ function closeMenu() {
       <div class="section-topline">
         <div class="section-heading">
           <p class="eyebrow">02 / Selected work</p>
-          <h2 id="work-title">Projects with<br /><span>a purpose.</span></h2>
+          <h2 id="work-title" v-reveal>Projects with<br /><span>a purpose.</span></h2>
         </div>
         <a class="text-link all-projects" href="https://github.com/friendlyBrandon" target="_blank" rel="noreferrer">
           More on GitHub <span aria-hidden="true">↗</span>
@@ -157,7 +188,7 @@ function closeMenu() {
         <div class="project-info">
           <div class="project-meta"><span>01</span><span>Full-stack · Forecasting</span></div>
           <h3>AquaFin</h3>
-          <p>
+          <p v-reveal>
             A flood-preparedness platform that pairs a Laravel web app with a Python forecasting
             service. It turns rainfall predictions into helpful material recommendations, with
             dashboards, charts, and a materials cart.
@@ -173,7 +204,7 @@ function closeMenu() {
     <section class="community section-wrap section-space" id="community" aria-labelledby="community-title">
       <div class="section-heading">
         <p class="eyebrow">03 / Beyond the code</p>
-        <h2 id="community-title">Good things happen<br /><span>in good communities.</span></h2>
+        <h2 id="community-title" v-reveal>Good things happen<br /><span>in good communities.</span></h2>
       </div>
       <div class="community-grid">
         <article class="community-card mysterium-card">
@@ -190,7 +221,7 @@ function closeMenu() {
           </div>
           <p class="eyebrow">COMMUNITY HELPER</p>
           <h3>Mysterium Network</h3>
-          <p class="body-copy">
+          <p class="body-copy" v-reveal>
             I help out in the Mysterium Network community — a decentralized VPN project —
             and enjoy being part of a community that cares about an open internet.
           </p>
@@ -203,7 +234,7 @@ function closeMenu() {
           <div class="proxy-logo-wrap"><img :src="proxyBaseLogo" alt="ProxyBase logo" /></div>
           <p class="eyebrow">MY BUSINESS</p>
           <h3>ProxyBase</h3>
-          <p class="body-copy">
+          <p class="body-copy" v-reveal>
             ProxyBase is my business, providing residential proxy access with usage-based pricing
             advertised from $0.75 per GB. Customers can add funds by card or cryptocurrency,
             starting at $1.
@@ -222,8 +253,8 @@ function closeMenu() {
     <section class="contact section-wrap" id="contact" aria-labelledby="contact-title">
       <div class="contact-content">
         <p class="eyebrow">04 / Let’s connect</p>
-        <h2 id="contact-title">Have a good one<br />in <span>mind?</span></h2>
-        <p>I’m always happy to connect, talk about projects, and learn something new.</p>
+        <h2 id="contact-title" v-reveal>Have a good one<br />in <span>mind?</span></h2>
+        <p v-reveal>I’m always happy to connect, talk about projects, and learn something new.</p>
         <a class="button button-light" href="https://www.linkedin.com/in/birger-willemoons-83a1663b9" target="_blank" rel="noreferrer">
           Find me on LinkedIn <span aria-hidden="true">↗</span>
         </a>
