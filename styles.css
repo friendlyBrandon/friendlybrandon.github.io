@@ -177,9 +177,8 @@ h2 { margin-bottom: 0; font-size: clamp(37px, 4.6vw, 55px); font-weight: 600; li
 .community-card { min-height: 380px; padding: 26px 30px 28px; background: var(--surface-raised); display: flex; flex-direction: column; align-items: flex-start; }
 .community-card-top { width: 100%; display: flex; justify-content: space-between; color: #8a8c82; font: 9px var(--mono); }
 .community-arrow { color: #6d7064; font-size: 14px; }
-.mysterium-symbol { display: flex; align-items: center; justify-content: center; gap: 4px; width: 47px; height: 47px; margin: 29px 0 25px; }
-.mysterium-symbol span { width: 8px; height: 31px; background: #7f5bd0; border-radius: 8px; transform: rotate(28deg); }
-.mysterium-symbol span:first-child { height: 22px; transform: rotate(-28deg); }.mysterium-symbol span:last-child { height: 22px; transform: rotate(-28deg); }
+.mysterium-logo-wrap { width: 88px; height: 88px; margin: 20px 0 17px; overflow: hidden; border-radius: 8px; }
+.mysterium-logo-wrap img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .community-card .eyebrow { margin-bottom: 8px; font-size: 8px; }
 .community-card h3 { margin-bottom: 12px; font-size: 20px; letter-spacing: -.04em; }
 .community-card .body-copy { max-width: 430px; margin-bottom: 22px; font-size: 11px; }

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from "vue";
+import mysteriumLogo from "../myst.png";
 import proxyBaseLogo from "../duckinglogo.png";
 
 const isMenuOpen = ref(false);
@@ -177,7 +178,9 @@ function closeMenu() {
       <div class="community-grid">
         <article class="community-card mysterium-card">
           <div class="community-card-top"><span class="community-number">01</span><span class="community-arrow" aria-hidden="true">↗</span></div>
-          <div class="mysterium-symbol" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="mysterium-logo-wrap">
+            <img :src="mysteriumLogo" alt="Mysterium Network logo" />
+          </div>
           <p class="eyebrow">COMMUNITY HELPER</p>
           <h3>Mysterium Network</h3>
           <p class="body-copy">

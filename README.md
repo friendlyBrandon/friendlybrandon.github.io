@@ -19,13 +19,14 @@ Install dependencies with `npm install`, then use:
 - `vite.config.js` — Vite configuration.
 - `package.json` — Vue/Vite dependencies and project scripts.
 - `duckinglogo.png` — the supplied ProxyBase logo.
+- `myst.png` — the supplied Mysterium Network logo.
 
 ## What the portfolio includes
 
 - An introduction identifying the portfolio owner as `friendlyBrandon` and a graduate programming student.
 - C#, Java, and JavaScript as programming languages in the toolkit.
 - An AquaFin project card linking to [friendlyBrandon/AquaFin_Project](https://github.com/friendlyBrandon/AquaFin_Project). Its description covers the Laravel application, Python rainfall-forecasting service, flood-preparedness recommendations, dashboard, charts, and materials cart.
-- A Mysterium Network community-helper section.
+- A Mysterium Network community-helper section using `myst.png` as the network logo.
 - A ProxyBase business section using `duckinglogo.png`, with public-site details about residential proxies, usage-based pricing advertised from $0.75/GB, and card or cryptocurrency top-ups starting at $1.
 - Links to the GitHub profile, LinkedIn profile, ProxyBase, and Mysterium Network.
 - Responsive desktop and mobile navigation, custom project illustrations, and a dark/light appearance toggle.
