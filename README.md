@@ -17,16 +17,18 @@ start the app; it needs to be served by Vite or another static web server.
 
 ## GitHub Pages deployment
 
-GitHub Pages must publish the Vite production output, not the repository's source
-`index.html`. The workflow in `.github/workflows/deploy.yml` builds the app and
-publishes `dist/` when changes are pushed to `main`. In the repository settings,
-open **Pages** and set **Build and deployment → Source** to **GitHub Actions**.
+This is the `friendlyBrandon.github.io` user-site repository, so it publishes at
+`https://friendlybrandon.github.io/`. The workflow in
+`.github/workflows/deploy.yml` builds the app and publishes `dist/` when changes
+are pushed to `main`. In repository settings, open **Pages** and set
+**Build and deployment → Source** to **GitHub Actions**. If Pages publishes the
+branch directly, it serves the source `index.html` and `/src/main.js` instead of
+the compiled Vue app, leaving the page blank.
 
-This repository is named `new-gh`, so its GitHub Pages project URL is
-`https://friendlybrandon.github.io/new-gh/`. The root URL
-`https://friendlybrandon.github.io/` is reserved for a user site and requires a
-repository named `friendlyBrandon.github.io` (GitHub URLs are case-insensitive).
-Rename this repository to that exact name if the root URL is the intended one.
+If the Actions log runs `actions/jekyll-build-pages@v1` and reports that the
+`docs/` directory is missing, Pages is still configured to deploy from the
+`docs/` folder on a branch. This project has no `docs/` folder; change the Pages
+source to **GitHub Actions** so the Vite workflow publishes `dist/` instead.
 
 ## Project files
 
@@ -81,9 +83,10 @@ There is no automated test suite; the production build is the project-level vali
 
 If the expected page does not appear at `http://localhost:5173`, check the URL
 printed in the terminal after `npm run dev`. A port conflict makes Vite serve the
-site on the next available port. For GitHub Pages, check the Actions tab for a
-successful deployment and confirm Pages uses **GitHub Actions** as its source;
-publishing the repository root serves unbuilt Vue source and leaves the page blank.
+site on the next available port. If the live HTML references `/src/main.js`, or
+the Actions log reports a missing `docs/` directory in Jekyll, set the GitHub
+Pages source to **GitHub Actions** and check the latest deployment in the Actions
+tab; the built site references files under `assets/`.
 
 ## What could be improved
 
