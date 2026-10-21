@@ -1,16 +1,23 @@
 # friendlyBrandon Portfolio
 
-A responsive, static portfolio website for **friendlyBrandon**, a graduate programming student with experience in C#, Java, and JavaScript. The site presents selected project work, community involvement, and links to GitHub, LinkedIn, ProxyBase, and Mysterium Network.
+A responsive portfolio website for **friendlyBrandon**, a graduate programming student with experience in C#, Java, and JavaScript. The site presents selected project work, community involvement, ProxyBase as a business, and links to GitHub, LinkedIn, ProxyBase, and Mysterium Network. It is built with Vue 3 and Vite and remains a static site without accounts, a message inbox, or a backend.
 
-## View the site
+## Development
 
-Open `index.html` in a browser. No build step or package installation is needed. For local development, you can also serve the folder with any static web server.
+Install dependencies with `npm install`, then use:
+
+- `npm run dev` — start the Vite development server.
+- `npm run build` — create the production site in `dist/`.
+- `npm run preview` — preview the production build locally.
 
 ## Project files
 
-- `index.html` — semantic page structure, portfolio content, and external links.
+- `index.html` — Vite entry page and document metadata.
+- `src/main.js` — Vue application entry point and stylesheet import.
+- `src/App.vue` — portfolio content, responsive navigation, and theme interaction.
 - `styles.css` — responsive layout, illustrations, and dark/light theme colors.
-- `script.js` — mobile navigation, theme toggle, and current-year footer.
+- `vite.config.js` — Vite configuration.
+- `package.json` — Vue/Vite dependencies and project scripts.
 - `duckinglogo.png` — the supplied ProxyBase logo.
 
 ## What the portfolio includes
@@ -19,7 +26,7 @@ Open `index.html` in a browser. No build step or package installation is needed.
 - C#, Java, and JavaScript as programming languages in the toolkit.
 - An AquaFin project card linking to [friendlyBrandon/AquaFin_Project](https://github.com/friendlyBrandon/AquaFin_Project). Its description covers the Laravel application, Python rainfall-forecasting service, flood-preparedness recommendations, dashboard, charts, and materials cart.
 - A Mysterium Network community-helper section.
-- A ProxyBase section using `duckinglogo.png`, with public-site details about residential proxies, usage-based pricing advertised from $0.75/GB, and card or cryptocurrency top-ups starting at $1.
+- A ProxyBase business section using `duckinglogo.png`, with public-site details about residential proxies, usage-based pricing advertised from $0.75/GB, and card or cryptocurrency top-ups starting at $1.
 - Links to the GitHub profile, LinkedIn profile, ProxyBase, and Mysterium Network.
 - Responsive desktop and mobile navigation, custom project illustrations, and a dark/light appearance toggle.
 
@@ -36,20 +43,21 @@ The requested changes incorporated during development were:
 3. Refine the presentation, make dark mode the default, and add a light-mode toggle.
 4. Remove the archived Mysterium staking bot from the portfolio.
 5. Use `friendlyBrandon` instead of the owner's real name in portfolio content.
-6. Expand the ProxyBase description using information from its public site.
+6. Expand the ProxyBase description using information from its public site and identify ProxyBase as the owner's business.
 7. Remove the claim that ProxyBase balances do not expire and improve the contrast of the contact section in light mode.
 8. Document the work and possible improvements in this README.
+9. Follow `AGENTS.md` by migrating the site to Vue 3 and Vite, keeping it static, keyboard-usable, and responsive, and making ProxyBase's business status explicit.
 
 The LinkedIn profile could not be accessed automatically while creating the portfolio, so LinkedIn-specific education and employment history were not added or inferred. Project and ProxyBase descriptions use publicly accessible GitHub and service-page information alongside the details supplied in the request.
 
 ## Validation performed
 
-- Checked JavaScript syntax and parsed the HTML.
+- Ran `npm run build` to validate the Vue application and create the production bundle.
 - Opened the page in a browser and checked the mobile menu, theme switching, and ProxyBase logo loading.
 - Checked for horizontal overflow at mobile, tablet, and desktop viewport widths.
 - Checked the light-mode contact-section text contrast in the browser.
 
-There is no automated test suite or build configuration in this static project.
+There is no automated test suite; the production build is the project-level validation command.
 
 ## What could be improved
 
