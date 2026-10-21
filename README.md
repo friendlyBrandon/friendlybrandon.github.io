@@ -19,7 +19,7 @@ Install dependencies with `npm install`, then use:
 - `vite.config.js` — Vite configuration.
 - `package.json` — Vue/Vite dependencies and project scripts.
 - `duckinglogo.png` — the supplied ProxyBase logo.
-- `myst.png` — the supplied Mysterium Network logo.
+- `public/myst.png` — the supplied Mysterium Network logo, served as a static asset.
 
 ## What the portfolio includes
 
